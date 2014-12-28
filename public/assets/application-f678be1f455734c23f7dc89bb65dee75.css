@@ -1,0 +1,646 @@
+@import url(http://fonts.googleapis.com/css?family=Playfair+Display:900|Josefin+Sans:400);
+@font-face {
+  font-weight: normal;
+  font-style: normal;
+  font-family: 'codropsicons';
+  src: url("/codropsicons.eot");
+  src: url("/codropsicons.eot?#iefix") format("embedded-opentype"), url("/codropsicons.woff") format("woff"), url("/codropsicons.ttf") format("truetype"), url("/codropsicons.svg#codropsicons") format("svg");
+}
+
+/* line 13, /Users/scottgaletto/Dev/scottg-photo-project/app/assets/stylesheets/demo.css.scss.erb */
+*, *:after, *:before {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+/* line 14, /Users/scottgaletto/Dev/scottg-photo-project/app/assets/stylesheets/demo.css.scss.erb */
+.clearfix:before, .clearfix:after {
+  display: table;
+  content: '';
+}
+
+/* line 15, /Users/scottgaletto/Dev/scottg-photo-project/app/assets/stylesheets/demo.css.scss.erb */
+.clearfix:after {
+  clear: both;
+}
+
+/* line 17, /Users/scottgaletto/Dev/scottg-photo-project/app/assets/stylesheets/demo.css.scss.erb */
+body {
+  background: #2a2e39;
+  color: #dbdbdb;
+  font-weight: 400;
+  font-size: 1em;
+  font-family: "Helvetica Neue", Helvetica, sans-serif;
+}
+
+/* line 25, /Users/scottgaletto/Dev/scottg-photo-project/app/assets/stylesheets/demo.css.scss.erb */
+a {
+  color: #36b6dd;
+  text-decoration: none;
+}
+
+/* line 31, /Users/scottgaletto/Dev/scottg-photo-project/app/assets/stylesheets/demo.css.scss.erb */
+a:hover,
+a:focus {
+  outline: none;
+  color: #fff !important;
+}
+
+/* line 36, /Users/scottgaletto/Dev/scottg-photo-project/app/assets/stylesheets/demo.css.scss.erb */
+.codrops-links {
+  position: relative;
+  -webkit-flex: none;
+  flex: none;
+  white-space: nowrap;
+}
+
+/* line 43, /Users/scottgaletto/Dev/scottg-photo-project/app/assets/stylesheets/demo.css.scss.erb */
+.codrops-links::after {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  margin-left: -1px;
+  width: 2px;
+  height: 100%;
+  background: #dbdbdb;
+  content: '';
+  -webkit-transform: rotate3d(0, 0, 1, 22.5deg);
+  transform: rotate3d(0, 0, 1, 22.5deg);
+}
+
+/* line 56, /Users/scottgaletto/Dev/scottg-photo-project/app/assets/stylesheets/demo.css.scss.erb */
+.codrops-icon {
+  display: inline-block;
+  margin: 0.5em;
+  padding: 0em 0;
+  width: 1.5em;
+  text-decoration: none;
+}
+
+/* line 64, /Users/scottgaletto/Dev/scottg-photo-project/app/assets/stylesheets/demo.css.scss.erb */
+.codrops-icon span {
+  display: none;
+}
+
+/* line 68, /Users/scottgaletto/Dev/scottg-photo-project/app/assets/stylesheets/demo.css.scss.erb */
+.codrops-icon:before {
+  margin: 0 5px;
+  text-transform: none;
+  font-weight: normal;
+  font-style: normal;
+  font-variant: normal;
+  font-family: 'codropsicons';
+  line-height: 1;
+  speak: none;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* line 80, /Users/scottgaletto/Dev/scottg-photo-project/app/assets/stylesheets/demo.css.scss.erb */
+.codrops-icon--drop:before {
+  content: "\e001";
+}
+
+/* line 84, /Users/scottgaletto/Dev/scottg-photo-project/app/assets/stylesheets/demo.css.scss.erb */
+.codrops-icon--prev:before {
+  content: "\e004";
+}
+
+/* line 88, /Users/scottgaletto/Dev/scottg-photo-project/app/assets/stylesheets/demo.css.scss.erb */
+.demos {
+  margin-top: 0.5em;
+}
+
+/* line 92, /Users/scottgaletto/Dev/scottg-photo-project/app/assets/stylesheets/demo.css.scss.erb */
+.demos__item {
+  display: inline-block;
+  margin: 0 1em 0 0;
+  padding: 0.2em 0;
+  text-transform: uppercase;
+  white-space: nowrap;
+  letter-spacing: 2px;
+  font-size: 0.75em;
+}
+
+/* line 102, /Users/scottgaletto/Dev/scottg-photo-project/app/assets/stylesheets/demo.css.scss.erb */
+.demos__item--current {
+  border-bottom: 1px solid #000;
+  border-color: initial;
+}
+
+/* line 107, /Users/scottgaletto/Dev/scottg-photo-project/app/assets/stylesheets/demo.css.scss.erb */
+.related {
+  padding: 9em 1em;
+  text-align: center;
+  font-size: 1.5em;
+  line-height: 1.8;
+}
+
+@media screen and (max-width: 590px) {
+  /* line 115, /Users/scottgaletto/Dev/scottg-photo-project/app/assets/stylesheets/demo.css.scss.erb */
+  .demos__item {
+    margin-bottom: 1.5em;
+  }
+}
+body {
+	overflow-y: scroll; /* prevent jump */
+	overflow-x: hidden;
+}
+
+/* hidden class for the SVG */
+.hidden {
+	position: absolute;
+	overflow: hidden;
+	width: 0;
+	height: 0;
+}
+
+/* Global thumbnail navigation */
+.thumb-nav {
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 1000;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-align-items: center;
+	align-items: center;
+	padding: 2em;
+	-webkit-transition: -webkit-transform 0.6s, opacity 0.6s;
+	transition: transform 0.6s, opacity 0.6s;
+	-webkit-transition-timing-function: cubic-bezier(0.7, 0, 0.3, 1);
+	transition-timing-function: cubic-bezier(0.7, 0, 0.3, 1);
+}
+
+.thumb-nav--hide {
+	opacity: 0;
+	-webkit-transform: translate3d(0, -200px, 0);
+	transform: translate3d(0, -200px, 0);
+}
+
+.thumb-nav__item {
+	position: relative;
+	display: block;
+	margin-right: 20px;
+	border: 2px solid #fff;
+	border-radius: 50%;
+	color: #fff;
+}
+
+.thumb-nav__item img {
+	display: block;
+	border-radius: 50%;
+	opacity: 0.2;
+	-webkit-transition: opacity 0.3s, -webkit-transform 0.3s;
+	transition: opacity 0.3s, transform 0.3s;
+}
+
+.thumb-nav__item--current img,
+.thumb-nav__item:hover img {
+	opacity: 0.95;
+	-webkit-transform: scale3d(0.75, 0.75, 1);
+	transform: scale3d(0.75, 0.75, 1);
+}
+
+.thumb-nav__item span {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	text-align: center;
+	font-size: 1em;
+	line-height: 45px;
+}
+
+/* Container styles */
+.container,
+.container::after {
+	position: absolute; 
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100vh;
+	opacity: 0;
+	pointer-events: none;
+}
+
+.container {
+	z-index: 1;
+	overflow: hidden;
+	background: #2a2e39;
+	-webkit-transform-origin: 50% 120%;
+	transform-origin: 50% 120%;
+}
+
+.container::after {
+	z-index: 1000;
+	background: #000;
+	content: '';
+	-webkit-transition: opacity 0.9s;
+	transition: opacity 0.9s;
+	-webkit-transition-timing-function: cubic-bezier(0.7, 0, 0.3, 1);
+	transition-timing-function: cubic-bezier(0.7, 0, 0.3, 1);
+}
+
+.container--animOutRight::after,
+.container--animOutLeft::after {
+	opacity: 1;
+}
+
+.container--current {
+	position: absolute;
+	z-index: 100;
+	height: auto;
+	opacity: 1;
+	pointer-events: auto;
+}
+
+.container--animInRight,
+.container--animInLeft {
+	z-index: 101;
+	opacity: 1;
+}
+
+.container--animInRight,
+.container--animInLeft,
+.container--animOutRight,
+.container--animOutLeft {
+	-webkit-animation-timing-function: cubic-bezier(0.7,0,0.3,1);
+	animation-timing-function: cubic-bezier(0.7,0,0.3,1);
+	-webkit-animation-duration: 0.9s;
+	animation-duration: 0.9s;
+	-webkit-animation-fill-mode: forwards;
+	animation-fill-mode: forwards;
+}
+
+.container--animInRight {
+	-webkit-animation-name: animInRight;
+	animation-name: animInRight;
+}
+
+.container--animInLeft {
+	-webkit-animation-name: animInLeft;
+	animation-name: animInLeft;
+}
+
+.container--animOutRight {
+	-webkit-animation-name: animOutRight;
+	animation-name: animOutRight;
+}
+
+.container--animOutLeft {
+	-webkit-animation-name: animOutLeft;
+	animation-name: animOutLeft;
+}
+
+@-webkit-keyframes animOutLeft {
+	from {} /* Fixes Chrome issue 35.0.1916.114 (easing breaks) */
+	to {
+		-webkit-transform: rotate3d(0,0,1,-20deg) translate3d(-100%,0,0);
+		opacity: 0;
+	}
+}
+
+@keyframes animOutLeft {
+	from {} /* Fixes Chrome issue 35.0.1916.114 (easing breaks) */
+	to {
+		-webkit-transform: rotate3d(0,0,1,-20deg) translate3d(-100%,0,0);
+		transform: rotate3d(0,0,1,-20deg) translate3d(-100%,0,0);
+		opacity: 0;
+	}
+}
+
+@-webkit-keyframes animInRight {
+	from {
+		-webkit-transform: rotate3d(0,0,1,20deg) translate3d(100%,0,0);
+		opacity: 0;
+	}
+	to {
+		-webkit-transform: rotate3d(0,0,1,0deg) translate3d(0,0,0);
+	}
+}
+
+@keyframes animInRight {
+	from {
+		-webkit-transform: rotate3d(0,0,1,20deg) translate3d(100%,0,0);
+		transform: rotate3d(0,0,1,20deg) translate3d(100%,0,0);
+		opacity: 0;
+	}
+	to {
+		-webkit-transform: rotate3d(0,0,1,0deg) translate3d(0,0,0);
+		transform: rotate3d(0,0,1,0deg) translate3d(0,0,0);
+	}
+}
+
+@-webkit-keyframes animOutRight {
+	from {} /* Fixes Chrome issue 35.0.1916.114 (easing breaks) */
+	to {
+		-webkit-transform: rotate3d(0,0,1,20deg) translate3d(100%,0,0);
+		opacity: 0;
+	}
+}
+
+@keyframes animOutRight {
+	from {} /* Fixes Chrome issue 35.0.1916.114 (easing breaks) */
+	to {
+		-webkit-transform: rotate3d(0,0,1,20deg) translate3d(100%,0,0);
+		transform: rotate3d(0,0,1,20deg) translate3d(100%,0,0);
+		opacity: 0;
+	}
+}
+
+@-webkit-keyframes animInLeft {
+	from {
+		-webkit-transform: rotate3d(0,0,1,-20deg) translate3d(-100%,0,0);
+		opacity: 0;
+	}
+	to {
+		-webkit-transform: rotate3d(0,0,1,0deg) translate3d(0,0,0);
+	}
+}
+
+@keyframes animInLeft {
+	from {
+		-webkit-transform: rotate3d(0,0,1,-20deg) translate3d(-100%,0,0);
+		transform: rotate3d(0,0,1,-20deg) translate3d(-100%,0,0);
+		opacity: 0;
+	}
+	to {
+		-webkit-transform: rotate3d(0,0,1,0deg) translate3d(0,0,0);
+		transform: rotate3d(0,0,1,0deg) translate3d(0,0,0);
+	}
+}
+
+.intro {
+	position: fixed;
+	z-index: 10;
+	overflow: hidden;
+	width: 100%;
+	height: 100vh;
+	background: #2a2e39;
+	-webkit-transition: -webkit-transform 0.6s;
+	transition: transform 0.6s;
+	-webkit-transition-timing-function: cubic-bezier(0.7, 0, 0.3, 1);
+	transition-timing-function: cubic-bezier(0.7, 0, 0.3, 1);
+}
+
+.container--animInRight .intro,
+.container--animInLeft .intro,
+.container--animOutRight .intro,
+.container--animOutLeft .intro {
+	position: absolute;
+}
+
+.container--open .intro {
+	-webkit-transform: translate3d(0, -100%, 0) translate3d(0, 250px, 0);
+	transform: translate3d(0, -100%, 0) translate3d(0, 250px, 0);
+}
+
+/* Fullscreen image */
+.intro__image {
+	position: absolute;
+	bottom: 0;
+	min-width: 100%;
+	min-height: 120%;
+	width: auto;
+	height: auto;
+	opacity: 0.8;
+	-webkit-transform: translate3d(0, 0, 0);
+	transform: translate3d(0, 0, 0);
+	-webkit-transition: -webkit-transform 0.6s, opacity 0.6s;
+	transition: transform 0.6s, opacity 0.6s;
+	-webkit-transition-timing-function: cubic-bezier(0.7, 0, 0.3, 1);
+	transition-timing-function: cubic-bezier(0.7, 0, 0.3, 1);
+}
+
+.container--open .intro__image {
+	opacity: 0;
+	-webkit-transform: translate3d(0, 20%, 0);
+	transform: translate3d(0, 20%, 0);
+}
+
+/* Intro content */
+.intro__content {
+	position: absolute;
+	bottom: 60px;
+	padding: 1.8em;
+	width: 100%;
+	font-size: 1.15em;
+}
+
+.intro__title {
+	margin: 0 0 10px;
+	font-weight: 900;
+	font-size: 4em;
+	font-family: "Playfair Display", Georgia, serif;
+	line-height: 1;
+}
+
+.intro__subtitle {
+	display: -webkit-flex;
+	display: flex;
+	-webkit-align-items: center;
+	align-items: center;
+}
+
+.intro__description {
+	margin: 0 auto 0 .25em;
+	line-height: 1.2;
+}
+
+/* Trigger button with SVG */
+.trigger {
+	position: relative;
+	-webkit-flex: none;
+	flex: none;
+	overflow: hidden;
+	margin: 0 0 0 20px;
+	padding: 0;
+	width: 40px;
+	height: 40px;
+	outline: none;
+	border: none;
+	background: none;
+}
+
+/* Hide the text */
+.trigger span {
+	position: absolute;
+	top: 100%;
+}
+
+.icon {
+	-webkit-transform-origin: 50% 50%;
+	transform-origin: 50% 50%;
+	-webkit-transition: opacity 0.3s, -webkit-transform 0.3s;
+	transition: opacity 0.3s, transform 0.3s;
+
+	stroke: #dbdbdb;
+	fill: none;
+	stroke-width: 2px;
+}
+
+/* Hide grid and show cross when opening */
+.icon--cross,
+.trigger--active .icon--grid {
+	opacity: 0;
+	-webkit-transform: scale3d(0.5, 0.5, 1);
+	transform: scale3d(0.5, 0.5, 1);
+}
+
+.trigger--active .icon--cross {
+	opacity: 1;
+	-webkit-transform: scale3d(1, 1, 1);
+	transform: scale3d(1, 1, 1);
+}
+
+/* Main content */
+.items-wrap {
+	position: relative;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-flex-wrap: wrap;
+	flex-wrap: wrap;
+	padding: 250px 5px 0;
+}
+
+.items-wrap::after {
+	position: relative;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-flex-wrap: wrap;
+	flex-wrap: wrap;
+	padding: 250px 5px 0;
+}
+
+.container--open .items-wrap::after {
+	opacity: 0;
+}
+
+.item {
+	position: relative;
+	-webkit-flex: 1 0 25%;
+	flex: 1 0 25%;
+	overflow: hidden;
+	height: 22vw;
+	outline: none;
+	border: 5px solid #2a2e39;
+	border-width: 0 5px 10px;
+	background: #2a2e39;
+}
+
+.item__image {
+	position: absolute;
+	top: 50%;
+	min-height: 100%;
+	width: 100%;
+	opacity: 0.7;
+	-webkit-transform: translate3d(0, -50%, 0) scale3d(1.2, 1.2, 1);
+	transform: translate3d(0, -50%, 0) scale3d(1.2, 1.2, 1);
+	-webkit-transition: -webkit-transform 0.5s, opacity 0.5s;
+	transition: transform 0.5s, opacity 0.5s;
+}
+
+.item:hover .item__image {
+	opacity: 1;
+	-webkit-transform: translate3d(0, -50%, 0);
+	transform: translate3d(0, -50%, 0);
+}
+
+.item__title {
+	position: absolute;
+	bottom: 0;
+	margin: 0;
+	padding: 1em;
+	color: #dbdbdb;
+	font-size: 1.85em;
+	font-family: "Playfair Display", Georgia, serif;
+	line-height: 1;
+	-webkit-transition: -webkit-transform 0.3s, opacity 0.3s;
+	transition: transform 0.3s, opacity 0.3s;
+}
+
+.item:hover .item__title {
+	opacity: 0;
+	-webkit-transform: translate3d(0, 20px, 0);
+	transform: translate3d(0, 20px, 0);
+}
+
+/* Color schemes */
+.theme-1 a {
+	color: #e28e51;
+}
+
+.theme-1,
+.theme-1 .intro {
+	background: #2b2827;
+}
+
+.theme-1 .item {
+	border-color: #2b2827;
+	background: #765136;
+}
+
+.theme-2 a {
+	color: #90be23;
+}
+
+.theme-2,
+.theme-2 .intro {
+	background: #21241f;
+}
+
+.theme-2 .item {
+	border-color: #21241f;
+	background: #74834f;
+}
+
+/* Media Queries */
+
+@media screen and (max-width: 1440px) {
+	.item {
+		-webkit-flex: 1 0 33.333%;
+		flex: 1 0 33.333%;
+		height: 30vw;
+	}
+}
+
+@media screen and (max-width: 1000px) {
+	.item {
+		-webkit-flex: 1 0 50%;
+		flex: 1 0 50%;
+		height: 45vw;
+	}
+	.item,
+	.intro__content {
+		font-size: 0.85em;
+	}
+}
+
+@media screen and (max-width: 590px) {
+	.item {
+		-webkit-flex: 1 0 100%;
+		flex: 1 0 100%;
+		height: 90vw;
+	}
+
+	.intro__title {
+		font-size: 3em;
+	}
+}
+article,aside,details,figcaption,figure,footer,header,hgroup,main,nav,section,summary{display:block;}audio,canvas,video{display:inline-block;}audio:not([controls]){display:none;height:0;}[hidden]{display:none;}html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;}body{margin:0;}a:focus{outline:thin dotted;}a:active,a:hover{outline:0;}h1{font-size:2em;margin:0.67em 0;}abbr[title]{border-bottom:1px dotted;}b,strong{font-weight:bold;}dfn{font-style:italic;}hr{-moz-box-sizing:content-box;box-sizing:content-box;height:0;}mark{background:#ff0;color:#000;}code,kbd,pre,samp{font-family:monospace,serif;font-size:1em;}pre{white-space:pre-wrap;}q{quotes:"\201C" "\201D" "\2018" "\2019";}small{font-size:80%;}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline;}sup{top:-0.5em;}sub{bottom:-0.25em;}img{border:0;}svg:not(:root){overflow:hidden;}figure{margin:0;}fieldset{border:1px solid #c0c0c0;margin:0 2px;padding:0.35em 0.625em 0.75em;}legend{border:0;padding:0;}button,input,select,textarea{font-family:inherit;font-size:100%;margin:0;}button,input{line-height:normal;}button,select{text-transform:none;}button,html input[type="button"],input[type="reset"],input[type="submit"]{-webkit-appearance:button;cursor:pointer;}button[disabled],html input[disabled]{cursor:default;}input[type="checkbox"],input[type="radio"]{box-sizing:border-box;padding:0;}input[type="search"]{-webkit-appearance:textfield;-moz-box-sizing:content-box;-webkit-box-sizing:content-box;box-sizing:content-box;}input[type="search"]::-webkit-search-cancel-button,input[type="search"]::-webkit-search-decoration{-webkit-appearance:none;}button::-moz-focus-inner,input::-moz-focus-inner{border:0;padding:0;}textarea{overflow:auto;vertical-align:top;}table{border-collapse:collapse;border-spacing:0;}
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+
+
+ */
+
