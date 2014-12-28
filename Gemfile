@@ -1,25 +1,24 @@
-source 'https://rubygems.org'
 
-gem 'rails', '4.1.4'
-gem 'sqlite3'
-gem 'sass-rails', '~> 4.0.3'
-gem 'uglifier', '>= 1.3.0'
-gem 'coffee-rails', '~> 4.0.0'
-gem 'turbolinks'
-gem 'jbuilder', '~> 2.0'
-gem 'paperclip'
-gem 'foundation-rails'
-gem 'sidekiq'
-gem 'aws-sdk', '~> 1.5.7'
+source 'https://rubygems.org'
+ruby '2.1.1'
+
+gem "rails", "4.1.1"
+gem "sass-rails", "~> 4.0.0"
+gem "uglifier", ">= 1.3.0"
+gem "jquery-rails"
+gem "jbuilder", "~> 1.2"
+gem "unicorn-rails"
 
 group :development, :test do
   gem "better_errors"
+  gem "rspec-rails"
+  gem "factory_girl_rails"
+  gem "sqlite3"
   gem "foreman"
-  gem 'spring'
-	gem 'unicorn-rails'
-
+  gem "spring"
 end
 
 group :production do
-  gem 'rails_12factor'
+  gem "rails_12factor"
+  gem "pg"
 end
