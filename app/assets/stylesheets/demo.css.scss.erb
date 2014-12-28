@@ -3,11 +3,11 @@
 	font-weight: normal;
 	font-style: normal;
 	font-family: 'codropsicons';
-	src:url('../fonts/codropsicons/codropsicons.eot');
-	src:url('../fonts/codropsicons/codropsicons.eot?#iefix') format('embedded-opentype'),
-		url('../fonts/codropsicons/codropsicons.woff') format('woff'),
-		url('../fonts/codropsicons/codropsicons.ttf') format('truetype'),
-		url('../fonts/codropsicons/codropsicons.svg#codropsicons') format('svg');
+	src:url("<%= asset_path 'codropsicons.eot' %>");
+	src:url("<%= asset_path 'codropsicons.eot?#iefix' %>") format('embedded-opentype'),
+		url("<%= asset_path 'codropsicons.woff' %>") format('woff'),
+		url("<%= asset_path 'codropsicons.ttf' %>") format('truetype'),
+		url("<%= asset_path 'codropsicons.svg#codropsicons' %>") format('svg');
 }
 
 *, *:after, *:before { -webkit-box-sizing: border-box; box-sizing: border-box; }
@@ -17,9 +17,9 @@
 body {
 	background: #2a2e39;
 	color: #dbdbdb;
-	font-weight: 200;
+	font-weight: 400;
 	font-size: 1em;
-	font-family: "Helvetica Neue Light", "Helvetica Neue", Helvetica, sans-serif;
+	font-family: "Helvetica Neue", Helvetica, sans-serif;
 }
 
 a {
