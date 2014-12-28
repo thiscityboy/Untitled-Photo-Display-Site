@@ -164,7 +164,18 @@
 			})();
 </script>
 
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery.touchswipe/1.6.4/jquery.touchSwipe.min.js"></script>
 
+<script>
+    $(function() {      
+      $("#container-1").swipe( {
+        swipe:function(event, direction, distance, duration, fingerCount, fingerData) {
+        },
+        threshold:0,
+        fingers:'all'
+      });
+    });
+</script>
 
 </body>
 </html>

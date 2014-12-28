@@ -390,7 +390,7 @@ body {
 	top: 50%;
 	min-height: 100%;
 	width: 100%;
-	opacity: 0.7;
+	opacity: 1;
 	-webkit-transform: translate3d(0, -50%, 0) scale3d(1.2, 1.2, 1);
 	transform: translate3d(0, -50%, 0) scale3d(1.2, 1.2, 1);
 	-webkit-transition: -webkit-transform 0.5s, opacity 0.5s;
@@ -483,4 +483,10 @@ body {
 	.intro__title {
 		font-size: 3em;
 	}
+
+	.intro__image {
+		top: 0px;
+		left: -600px;
+	}
+
 }
